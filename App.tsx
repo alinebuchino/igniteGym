@@ -1,3 +1,4 @@
+import { Loading } from "@components/Loading";
 import {
   Roboto_400Regular,
   Roboto_700Bold,
@@ -5,6 +6,7 @@ import {
 } from "@expo-google-fonts/roboto";
 import { NativeBaseProvider } from "native-base";
 import { StatusBar, View } from "react-native";
+import { THEME } from "./src/theme";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -13,13 +15,13 @@ export default function App() {
   });
 
   return (
-    <NativeBaseProvider>
+    <NativeBaseProvider theme={THEME}>
       <StatusBar
         barStyle={"light-content"}
         backgroundColor="transparent"
         translucent
       />
-      {fontsLoaded ? <View /> : <View />}
+      {fontsLoaded ? <View /> : <Loading />}
     </NativeBaseProvider>
   );
 }
